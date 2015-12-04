@@ -93,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 Info info = infoList.remove(0);
                 vh.title_tv.setText(info.getName());
                 TextView t = new TextView(MainActivity.this);
+                ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                t.setLayoutParams(layoutParams);
                 t.setText(info.getValue());
                 vh.item_ll.addView(t, vh.item_ll.getChildCount());
             }
