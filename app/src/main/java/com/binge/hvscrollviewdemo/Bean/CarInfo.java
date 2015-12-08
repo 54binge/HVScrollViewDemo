@@ -1,4 +1,4 @@
-package com.binge.hvscrollviewdemo.Bean;
+package com.binge.hvscrollviewdemo.bean;
 
 import java.util.List;
 

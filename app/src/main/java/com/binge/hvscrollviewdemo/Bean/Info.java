@@ -1,4 +1,4 @@
-package com.binge.hvscrollviewdemo.Bean;
+package com.binge.hvscrollviewdemo.bean;
 
 /**
  * Created by xzz64 on 2015/12/4.

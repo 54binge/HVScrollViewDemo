@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#873905"
     tools:context="com.binge.hvscrollviewdemo.MainActivity">
+
+    <include
+        android:id="@+id/title_in"
+        layout="@layout/fixed_title"
+        />
 
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/title_in"
         android:dividerHeight="0.5dp"/>
 </RelativeLayout>
