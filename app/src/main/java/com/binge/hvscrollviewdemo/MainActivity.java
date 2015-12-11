@@ -2,6 +2,7 @@ package com.binge.hvscrollviewdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.binge.hvscrollviewdemo.bean.Car;
 import com.binge.hvscrollviewdemo.bean.CarInfo;
 import com.binge.hvscrollviewdemo.bean.Info;
 import com.binge.hvscrollviewdemo.listener.ScrollChangeListener;
@@ -25,7 +25,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Car> carList = new ArrayList<>();
+    private List<CarInfo> carInfoList = new ArrayList<>();
     private LayoutInflater inflater;
     private RelativeLayout title_rl;
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         lv.setAdapter(new CarAdapter());
     }
 
-    class MTouchListener implements View.OnTouchListener{
+    class MTouchListener implements View.OnTouchListener {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             title_rl.findViewById(R.id.item_hsv).onTouchEvent(event);
@@ -70,23 +70,23 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 viewHeader = (ViewHeader) convertView.getTag();
             }
-            viewHeader.headTv.setText(carList.get(position).getCarInfo().getAttrName());
+            viewHeader.headTv.setText(carInfoList.get(position).getTitleName());
             return convertView;
         }
 
         @Override
         public long getHeaderId(int position) {
-            return carList.get(position).getCarInfo().getAttrName().hashCode();
+            return carInfoList.get(position).getTitleName().hashCode();
         }
 
         @Override
         public int getCount() {
-            return carList.size();
+            return carInfoList.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return carList.get(position);
+            return carInfoList.get(position).getInfo();
         }
 
         @Override
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            Log.e("----", "----------" + position);
             ViewHolder vh;
             if (convertView == null) {
                 vh = new ViewHolder();
@@ -109,20 +110,9 @@ public class MainActivity extends AppCompatActivity {
                 vh = (ViewHolder) convertView.getTag();
             }
 
-            Car car = carList.get(position);
-            CarInfo carInfo = car.getCarInfo();
-            List<Info> infoList = carInfo.getInfoList();
-            if(!infoList.isEmpty()){
-//                Info info = infoList.remove(0);
-//                vh.title_tv.setText(info.getName());
-//                TextView t = new TextView(MainActivity.this);
-//                ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//                layoutParams.height = 30;
-//                t.setLayoutParams(layoutParams);
-//                t.setText(info.getValue());
-//                vh.item_ll.addView(t, vh.item_ll.getChildCount());
-            }
+            Info info = (Info) getItem(position);
 
+            vh.title_tv.setText(info.getKeyName());
 
             return convertView;
         }
@@ -139,23 +129,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        for (int i = 1; i <= 50; i++) {
-            Car car = new Car();
-            car.setName("Car1");
-
+        for (int i = 1; i <= 10; i++) {
             CarInfo carInfo = new CarInfo();
-            carInfo.setAttrName("title-"+i);
+            carInfo.setTitleName("基本信息" + i);
+            Info info = new Info();
+            info.setKeyName("条目" + i);
+            List<String> list = new ArrayList<>();
+            for (int z = 1; z <= 11; z++) {
+                info.setCarName("奔驰" + z + "代");
+                list.add("奔驰" + z + "条目" + i);
+            }
+            info.setInfoValue(list);
 
-            //每个分类有8个属性
-            List<Info> list = new ArrayList<>();
-            for (int j = 1; j <= 8; j++) {
-                Info info = new Info("info-" + j, i + "-value-" + j);
-                list.add(info);
-            };
-            carInfo.setInfoList(list);
-            car.setCarInfo(carInfo);
+            carInfo.setInfo(info);
 
-            carList.add(car);
+            carInfoList.add(carInfo);
         }
     }
 

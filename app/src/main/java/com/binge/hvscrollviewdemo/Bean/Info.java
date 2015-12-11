@@ -1,30 +1,36 @@
 package com.binge.hvscrollviewdemo.bean;
 
+import java.util.List;
+
 /**
  * Created by xzz64 on 2015/12/4.
  */
 public class Info {
-    private String name;
-    private String value;
+    private String carName;
+    private String keyName;
+    private List<String> infoValue;
 
-    public Info(String name, String value) {
-        this.name = name;
-        this.value = value;
+    public String getCarName() {
+        return carName;
     }
 
-    public String getName() {
-        return name;
+    public void setCarName(String carName) {
+        this.carName = carName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getKeyName() {
+        return keyName;
     }
 
-    public String getValue() {
-        return value;
+    public void setKeyName(String keyName) {
+        this.keyName = keyName;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public List<String> getInfoValue() {
+        return infoValue;
+    }
+
+    public void setInfoValue(List<String> infoValue) {
+        this.infoValue = infoValue;
     }
 }
