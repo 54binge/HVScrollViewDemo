@@ -2,7 +2,6 @@ package com.binge.hvscrollviewdemo.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.HorizontalScrollView;
 
@@ -40,13 +39,11 @@ public class MHorizontalScrollView extends HorizontalScrollView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        Log.e("yyy","++++++++++++++++++++");
         return super.onTouchEvent(ev);
     }
 
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-        Log.e("yyy","===============");
         if (observer != null) {
             observer.notifyToScroll(l, t, oldl, oldt);
         }

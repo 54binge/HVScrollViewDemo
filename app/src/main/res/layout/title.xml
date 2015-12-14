@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binge="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
 
-    <TextView
+    <com.binge.hvscrollviewdemo.view.BorderTextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="#b2b3aa"
         android:gravity="center_vertical"
         android:paddingLeft="4dp"
-        android:text="title">
+        android:text="title"
+        binge:borderColor="#000000"
+        binge:borderWidth="0.5dp"
+        binge:drawBottomBorder="true"
+        binge:drawTopBorder="true">
 
-    </TextView>
+    </com.binge.hvscrollviewdemo.view.BorderTextView>
 </LinearLayout>

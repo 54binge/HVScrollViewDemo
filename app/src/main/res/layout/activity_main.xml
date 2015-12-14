@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dp"
     tools:context="com.binge.hvscrollviewdemo.MainActivity">
 
     <include
@@ -16,5 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/title_in"
-        android:dividerHeight="0.5dp"/>
+        android:layout_marginTop="8dp"
+        android:dividerHeight="0.5dp"
+        android:divider="#000000"/>
 </RelativeLayout>

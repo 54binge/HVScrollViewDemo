@@ -8,7 +8,7 @@ import java.util.List;
 public class Info {
     private String carName;
     private String keyName;
-    private List<String> infoValue;
+    private List<ValueInfo> infoValue;
 
     public String getCarName() {
         return carName;
@@ -26,11 +26,11 @@ public class Info {
         this.keyName = keyName;
     }
 
-    public List<String> getInfoValue() {
+    public List<ValueInfo> getInfoValue() {
         return infoValue;
     }
 
-    public void setInfoValue(List<String> infoValue) {
+    public void setInfoValue(List<ValueInfo> infoValue) {
         this.infoValue = infoValue;
     }
 }
